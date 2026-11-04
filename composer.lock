@@ -57,16 +57,16 @@
         },
         {
             "name": "contenir/contenir-audience",
-            "version": "dev-main",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contenir/contenir-audience.git",
-                "reference": "d78b54fddb0a3238d30bd826d438084faa397212"
+                "reference": "f56a737e4044705d5a72b0b59a5ae90bc9add080"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contenir/contenir-audience/zipball/d78b54fddb0a3238d30bd826d438084faa397212",
-                "reference": "d78b54fddb0a3238d30bd826d438084faa397212",
+                "url": "https://api.github.com/repos/contenir/contenir-audience/zipball/f56a737e4044705d5a72b0b59a5ae90bc9add080",
+                "reference": "f56a737e4044705d5a72b0b59a5ae90bc9add080",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,6 @@
                 "php-db/phpdb-sqlite": "0.3.x-dev",
                 "phpunit/phpunit": "^11.5.42"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -152,7 +151,7 @@
                 "issues": "https://github.com/contenir/contenir-audience/issues",
                 "source": "https://github.com/contenir/contenir-audience"
             },
-            "time": "2026-11-04T02:37:52+00:00"
+            "time": "2026-11-04T04:47:26+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
