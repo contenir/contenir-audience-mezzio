@@ -1,0 +1,95 @@
+{
+    "name": "contenir/contenir-audience-mezzio",
+    "description": "The site half of contenir/contenir-audience for Mezzio: a Subscriptions service a sign-up handler calls, which writes the sign-up to the add-on's outbox in the site's database, wired from the same bindings the CMS add-on reads.",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "contenir",
+        "mezzio",
+        "newsletter",
+        "mailing-list",
+        "subscribers",
+        "consent"
+    ],
+    "homepage": "https://contenir.com.au",
+    "support": {
+        "issues": "https://github.com/contenir/contenir-audience-mezzio/issues",
+        "source": "https://github.com/contenir/contenir-audience-mezzio"
+    },
+    "require": {
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+        "contenir/contenir-audience": "^0.1",
+        "php-db/phpdb": "^0.6.0",
+        "psr/clock": "^1.0",
+        "psr/container": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "contenir/contenir-qa-tools": "0.1.x-dev",
+        "infection/infection": "^0.34.1",
+        "laminas/laminas-servicemanager": "^3.22 || ^4.0",
+        "php-db/phpdb-mysql": "0.5.x-dev",
+        "php-db/phpdb-sqlite": "0.3.x-dev",
+        "phpunit/phpunit": "^11.5.42"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/contenir/contenir-audience"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Contenir\\Audience\\Mezzio\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Contenir\\Audience\\Mezzio\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@static-analysis",
+            "@test",
+            "@test-integration",
+            "@mutation-test"
+        ],
+        "cs-check": [
+            "mago format --check",
+            "mago lint"
+        ],
+        "cs-fix": [
+            "mago format",
+            "mago lint --fix"
+        ],
+        "static-analysis": "mago analyze",
+        "test": "phpunit --colors=always --testsuite unit",
+        "test-integration": [
+            "phpunit --colors=always --testsuite integration",
+            "@putenv CONTENIR_TEST_DB_PLATFORM=mysql",
+            "phpunit --colors=always --testsuite integration"
+        ],
+        "test-coverage": "@php -d pcov.directory=. -d pcov.exclude=#/vendor/# vendor/bin/phpunit --colors=always --coverage-clover clover.xml",
+        "mutation-test": "infection"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.99"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        },
+        "laminas": {
+            "config-provider": "Contenir\\Audience\\Mezzio\\ConfigProvider"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
